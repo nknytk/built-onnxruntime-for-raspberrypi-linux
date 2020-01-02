@@ -1,0 +1,58 @@
+FROM balenalib/raspberrypi3-python:3.5-stretch-build
+
+ARG ONNXRUNTIME_REPO=https://github.com/Microsoft/onnxruntime
+ARG ONNXRUNTIME_SERVER_BRANCH=v1.1.0
+
+#Enforces cross-compilation through Quemu
+RUN [ "cross-build-start" ]
+
+RUN install_packages \
+    sudo \
+    build-essential \
+    curl \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    wget \
+    git \
+    tar \
+    libatlas-base-dev
+
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade setuptools
+RUN pip3 install --upgrade wheel
+RUN pip3 install numpy
+
+# Build the latest cmake
+WORKDIR /code
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.14.3/cmake-3.14.3.tar.gz
+RUN tar zxf cmake-3.14.3.tar.gz
+
+WORKDIR /code/cmake-3.14.3
+RUN ./configure --system-curl
+RUN make
+RUN sudo make install
+
+# Set up build args
+ARG BUILDTYPE=MinSizeRel
+ARG BUILDARGS="--config ${BUILDTYPE} --arm"
+
+# Prepare onnxruntime Repo
+WORKDIR /code
+RUN git clone --single-branch --branch ${ONNXRUNTIME_SERVER_BRANCH} --recursive ${ONNXRUNTIME_REPO} onnxruntime
+
+# Start the basic build
+WORKDIR /code/onnxruntime
+RUN grep -v "DEV_MODE" tools/ci_build/build.py > build.py && mv build.py tools/ci_build/build.py
+RUN ./build.sh ${BUILDARGS} --update --build
+
+# Build Shared Library
+RUN ./build.sh ${BUILDARGS} --build_shared_lib
+
+# Build Python Bindings and Wheel
+RUN ./build.sh ${BUILDARGS} --enable_pybind --build_wheel
+
+# Build Output
+RUN ls -l /code/onnxruntime/build/Linux/${BUILDTYPE}/*.so
+RUN ls -l /code/onnxruntime/build/Linux/${BUILDTYPE}/dist/*.whl
+
+RUN [ "cross-build-end" ]
