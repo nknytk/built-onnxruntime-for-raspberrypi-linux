@@ -9,10 +9,21 @@ There is NO WARRANTY of any kind at all.
 
 ## Files
 
-### Dockerfiles
-
-This directory has Dockerfiles to build wheels.
-
-### wheels
+### wheels/
 
 This directory has built packages.
+
+### build.sh
+
+A script to build ONNX Runtime wheels for armv7-linux.  
+It builds wheels for Python 3.5, 3.6, and 3.7.  
+You need docker to run it.
+
+Usage:
+```
+$ sudo ./build.sh
+```
+
+### Dockerfile-arm32v7.template
+
+A Dockerfile template used in build.sh.
