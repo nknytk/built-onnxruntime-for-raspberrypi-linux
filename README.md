@@ -16,7 +16,7 @@ This directory has built packages.
 ### build.sh
 
 A script to build ONNX Runtime wheels for armv7-linux.  
-It builds wheels for Python 3.5, 3.6, and 3.7.  
+It builds wheels for Python 3.5, 3.6, 3.7 and 3.8.  
 You need docker to run it.
 
 Usage:
