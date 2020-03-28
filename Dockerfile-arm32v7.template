@@ -43,9 +43,6 @@ RUN git clone --single-branch --branch ${ONNXRUNTIME_SERVER_BRANCH} --recursive 
 # Start the basic build
 WORKDIR /code/onnxruntime
 RUN grep -v "DEV_MODE" tools/ci_build/build.py > build.py && mv build.py tools/ci_build/build.py
-RUN pip install distro &&\
-  sed -i "s/import\ platform/import\ platform\nimport\ distro/g" tools/ci_build/build.py &&\
-  sed -i "s/platform.linux_distribution()/distro.linux_distribution()/g" tools/ci_build/build.py
 RUN ./build.sh ${BUILDARGS} --update --build
 
 # Build Shared Library
