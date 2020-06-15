@@ -2,7 +2,7 @@
 
 set -e
 
-onnxruntime_ver=1.2.0
+onnxruntime_ver=1.3.0
 for pyver in 5 6 7 8; do
   cat Dockerfile-arm32v7.template | sed "s/PYTHON_MINOR_VERSION/${pyver}/" | sed "s/ONNXRUNTIME_VERSION/${onnxruntime_ver}/" > Dockerfile
   docker build --rm=true -t onnxruntime-arm32v7-3${pyver}:${onnxruntime_ver} .
