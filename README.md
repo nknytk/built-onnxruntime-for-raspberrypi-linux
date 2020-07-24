@@ -13,6 +13,11 @@ There is NO WARRANTY of any kind at all.
 
 This directory has built packages.
 
+* wheels/stretch/
+    - built packages for Raspbian Stretch
+* wheels/buster/
+    - built packages for Raspbian Buster or Raspberry Pi OS
+
 ### build.sh
 
 A script to build ONNX Runtime wheels for armv7-linux.  
