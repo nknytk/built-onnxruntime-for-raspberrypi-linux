@@ -20,7 +20,7 @@ This directory has built packages.
 
 ---
 
-Wheels are built on Raspberry Pi with [this procedure](./BUILD.md).
+Wheels are built on Raspberry Pi with [this procedure](./BUILD.md) since v1.6.0.  
 Building ONNX Runtime wheel for Raspberry Pi 32bit on Docker with Qemu stopped working since 2020 summer.
 ### build.sh
 
