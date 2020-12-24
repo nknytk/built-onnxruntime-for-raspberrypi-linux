@@ -13,11 +13,15 @@ There is NO WARRANTY of any kind at all.
 
 This directory has built packages.
 
+* wheels/stretch/
+    - built packages for Raspbian Stretch
+* wheels/buster/
+    - built packages for Raspbian Buster or Raspberry Pi OS
+
 ---
 
 Wheels are built on Raspberry Pi with [this procedure](./BUILD.md).
 Building ONNX Runtime wheel for Raspberry Pi 32bit on Docker with Qemu stopped working since 2020 summer.
-
 ### build.sh
 
 A script to build ONNX Runtime wheels for armv7-linux on Docker with Qemu.  
