@@ -13,9 +13,14 @@ There is NO WARRANTY of any kind at all.
 
 This directory has built packages.
 
+---
+
+Wheels are built on Raspberry Pi with [this procedure](./BUILD.md).
+Building ONNX Runtime wheel for Raspberry Pi 32bit on Docker with Qemu stopped working since 2020 summer.
+
 ### build.sh
 
-A script to build ONNX Runtime wheels for armv7-linux.  
+A script to build ONNX Runtime wheels for armv7-linux on Docker with Qemu.  
 It builds wheels for Python 3.5, 3.6, 3.7 and 3.8.  
 You need docker to run it.
 
