@@ -2,7 +2,7 @@
 
 [ONNX Runtime](https://github.com/microsoft/onnxruntime) is a cross-platform, high performance scoring engine for ML models. You can get Python bindings for Linux, Windows, Mac on x64 and arm64 platform from [pypi](https://pypi.org/project/onnxruntime/#files). The project does not provide pre-built packages for Raspbery Pi Linux 32bit (ARM32v7) as of today. Instead it has an instruction on [how to build ONNX Runtime from the source code](https://github.com/microsoft/onnxruntime/blob/master/BUILD.md).
 
-Building package takes a lot of time. This repository provides pre-built Python ONNX Runtime packages for Raspberry pi for convenience.
+Building package takes a lot of time. This repository provides pre-built Python ONNX Runtime Python wheel packages for Raspberry pi for convenience.
 
 There is NO WARRANTY of any kind at all.
 
@@ -12,10 +12,20 @@ There is NO WARRANTY of any kind at all.
 
 This directory has built packages.
 
-* wheels/stretch/
-    - built packages for Raspbian Stretch
+* wheels/bullseye/
+    - Built python wheel packages for Raspberry Pi OS based on Debian Bullseye (Relase date: 2021-10-30~).
 * wheels/buster/
-    - built packages for Raspbian Buster or Raspberry Pi OS
+    - Built python wheel packages for Raspbian Buster and Raspberry Pi OS based on Debian Buster.
+* wheels/stretch/
+    - Built python wheel packages for Raspbian Stretch.
+
+See your raspberry pi's `/etc/debian_version` file to find your OS version.
+
+| value of `/etc/debian_version` | Debian codename |
+| --- | --- |
+| 11.x | Bullseye |
+| 10.x | Buster |
+| 9.x | Stretch
 
 ---
 

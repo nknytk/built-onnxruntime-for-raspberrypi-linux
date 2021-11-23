@@ -43,11 +43,11 @@ $ git clone --single-branch --branch v1.6.0 --recursive https://github.com/Micro
 $ cd onnxruntime
 $ sed "s/python3/\/opt\/python3.8\/bin\/python3.8/" build.sh > build38.sh
 $ chmod +x build38.sh
-$ ./build38.sh --use_openmp --config MinSizeRel --arm --update --build --build_shared_lib --build_wheel
+$ ./build38.sh --use_openmp --config Release --update --build --build_shared_lib --build_wheel
 ```
 
 ## Check built wheel file
 
 ```
-$ ls build/Linux/MinSizeRel/dist/
+$ ls build/Linux/Release/dist/
 ```
