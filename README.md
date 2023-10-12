@@ -34,7 +34,7 @@ Building ONNX Runtime wheel for Raspberry Pi 32bit on Docker with Qemu stopped w
 ### build.sh
 
 A script to build ONNX Runtime wheels for armv7-linux on Docker with Qemu.  
-It builds wheels for Python 3.5, 3.6, 3.7 and 3.8.  
+It builds wheels for Python 3.8, 3.9, 3.10 and 3.11.  
 You need docker to run it.
 
 Usage:
